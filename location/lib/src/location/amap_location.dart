@@ -12,6 +12,8 @@ class AMapLocation {
   static const _locationChannel = MethodChannel('me.yohom/location');
   static const _locationEventChannel = EventChannel('me.yohom/location_event');
 
+  bool hasInit = false;
+
   AMapLocation._();
 
   factory AMapLocation() {
@@ -25,6 +27,7 @@ class AMapLocation {
 
   /// 初始化
   Future init() {
+    hasInit = true;
     return _locationChannel.invokeMethod('location#init');
   }
 
