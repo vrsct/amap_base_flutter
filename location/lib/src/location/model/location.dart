@@ -33,6 +33,8 @@ class Location {
   String street;
   String streetNum;
   num trustedLevel;
+  String township;
+  String neighborhood;
 
   Location({
     this.accuracy,
@@ -67,6 +69,8 @@ class Location {
     this.street,
     this.streetNum,
     this.trustedLevel,
+    this.township,
+    this.neighborhood,
   });
 
   Location.fromJson(Map<String, dynamic> json) {
@@ -104,6 +108,8 @@ class Location {
     street = json['street'] as String;
     streetNum = json['streetNum'] as String;
     trustedLevel = json['trustedLevel'] as int;
+    township = json['township'] as String;
+    neighborhood =json['neighborhood'] as String;
   }
 
   Map<String, dynamic> toJson() {
@@ -142,6 +148,8 @@ class Location {
     data['street'] = this.street;
     data['streetNum'] = this.streetNum;
     data['trustedLevel'] = this.trustedLevel;
+    data['township'] = this.township;
+    data['neighborhood'] = this.neighborhood;
     return data;
   }
 
@@ -178,6 +186,8 @@ class Location {
     String street,
     String streetNum,
     num trustedLevel,
+    String township,
+    String neighborhood,
   }) {
     return Location(
       accuracy: accuracy ?? this.accuracy,
@@ -213,6 +223,8 @@ class Location {
       street: street ?? this.street,
       streetNum: streetNum ?? this.streetNum,
       trustedLevel: trustedLevel ?? this.trustedLevel,
+      township: township ?? this.township,
+      neighborhood: neighborhood ?? this.neighborhood,
     );
   }
 
@@ -252,7 +264,9 @@ class Location {
           speed == other.speed &&
           street == other.street &&
           streetNum == other.streetNum &&
-          trustedLevel == other.trustedLevel;
+          trustedLevel == other.trustedLevel &&
+          township == other.township &&
+          neighborhood == other.neighborhood;
 
   @override
   int get hashCode =>
@@ -287,7 +301,9 @@ class Location {
       speed.hashCode ^
       street.hashCode ^
       streetNum.hashCode ^
-      trustedLevel.hashCode;
+      trustedLevel.hashCode ^
+      township.hashCode ^
+      neighborhood.hashCode ;
 
   @override
   String toString() {
